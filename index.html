@@ -7,6 +7,29 @@
   <meta name="author" content="А. А. Володин">
   <title>NeuroMarketing — нейросети для маркетологов</title>
 
+  <!-- Open Graph: корректное превью страницы при публикации ссылки -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="NeuroMarketing">
+  <meta property="og:title" content="NeuroMarketing — нейросети для маркетологов">
+  <meta property="og:description" content="Онлайн-курс «Нейросети для маркетологов»: от идеи до результата за 4 недели.">
+  <meta property="og:url" content="https://andreyvol2005.github.io/NeuroMarketing/">
+
+  <!-- Структурированные данные Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Нейросети для маркетологов: от идеи до результата за 4 недели",
+    "description": "Онлайн-курс о применении нейросетей в маркетинге: практика с первого дня, поддержка экспертов.",
+    "provider": {
+      "@type": "Organization",
+      "name": "NeuroMarketing",
+      "url": "https://andreyvol2005.github.io/NeuroMarketing/"
+    }
+  }
+  </script>
+
   <!-- Веб-шрифт (подключён при доработке сайта в лабораторной работе №5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,6 +249,57 @@
     .cta h2 { font-size: 34px; margin-bottom: 14px; }
     .cta p { opacity: .92; margin-bottom: 30px; font-size: 17px; }
 
+    /* ===== Секция отзывов ===== */
+    .reviews { background: #ffffff; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(23, 43, 99, .14);
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #eaf1ff;
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex: 0 0 auto;
+    }
+    .review-name { font-weight: 700; line-height: 1.3; }
+    .review-role { font-size: 13.5px; color: var(--muted); }
+    .review-stars { display: flex; gap: 3px; color: #f59e0b; }
+    .review-stars svg { width: 16px; height: 16px; }
+    .review-text { color: var(--muted); font-size: 15px; }
+    @media (max-width: 1023px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 767px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== Контакты ===== */
     .contacts-grid {
       display: grid;
@@ -442,6 +516,48 @@
       </div>
     </section>
 
+    <!-- ===== Отзывы выпускников ===== -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <h2 class="section-title">Отзывы выпускников</h2>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-head">
+              <div class="review-avatar" aria-hidden="true">АС</div>
+              <div>
+                <div class="review-name">Анна Смирнова</div>
+                <div class="review-role">маркетолог, e-commerce</div>
+              </div>
+            </div>
+            <div class="review-stars" role="img" aria-label="Оценка 5 из 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="review-text">«Курс дал структуру: теперь я понимаю, какие задачи можно передать нейросети, а где решение остаётся за человеком. Уже через неделю собрала контент-план и черновики рассылок с помощью промптов.»</p>
+          </article>
+          <article class="review-card">
+            <div class="review-head">
+              <div class="review-avatar" aria-hidden="true">ДК</div>
+              <div>
+                <div class="review-name">Дмитрий Ковалёв</div>
+                <div class="review-role">руководитель отдела маркетинга</div>
+              </div>
+            </div>
+            <div class="review-stars" role="img" aria-label="Оценка 5 из 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="review-text">«Понравился практический подход: каждое занятие — реальная задача. Отдельно ценно, что объясняют ограничения моделей и как проверять результат, а не просто „магия ИИ“.»</p>
+          </article>
+          <article class="review-card">
+            <div class="review-head">
+              <div class="review-avatar" aria-hidden="true">МС</div>
+              <div>
+                <div class="review-name">Мария Соколова</div>
+                <div class="review-role">SMM-специалист</div>
+              </div>
+            </div>
+            <div class="review-stars" role="img" aria-label="Оценка 5 из 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="review-text">«Самое полезное — разбор домашних заданий: обратная связь эксперта помогает увидеть, как улучшить свои промпты. Время на подготовку визуала и текстов сократилось заметно.»</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Свяжитесь с нами ===== -->
     <section class="contacts" id="contacts">
       <div class="container">
@@ -494,6 +610,7 @@
         <b>Навигация</b>
         <a href="#features">Преимущества</a>
         <a href="#about">Обучение</a>
+        <a href="#reviews">Отзывы</a>
         <a href="#contacts">Контакты</a>
       </div>
       <div class="footer-col">
@@ -518,7 +635,7 @@
 
   <script>
     // Плавное появление секций при прокрутке
-    const revealTargets = document.querySelectorAll('.feature-card, .about-inner, .cta .container, .contacts-grid');
+    const revealTargets = document.querySelectorAll('.feature-card, .review-card, .about-inner, .cta .container, .contacts-grid');
     revealTargets.forEach(el => el.classList.add('reveal'));
 
     const observer = new IntersectionObserver((entries) => {
