@@ -249,6 +249,55 @@
     .cta h2 { font-size: 34px; margin-bottom: 14px; }
     .cta p { opacity: .92; margin-bottom: 30px; font-size: 17px; }
 
+    /* ===== Изображения и мини-галерея «Занятия» ===== */
+    .hero-img {
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: block;
+      transition: transform .25s;
+    }
+    .gallery-item img:hover { transform: translateY(-4px); }
+    .gallery-caption {
+      margin-top: 10px;
+      font-size: 14.5px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 1023px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .hero-img { margin: 0 auto; }
+    }
+    @media (max-width: 767px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== Секция отзывов ===== */
     .reviews { background: #ffffff; }
     .reviews-grid {
@@ -464,10 +513,8 @@
           </ul>
         </div>
         <div class="hero-media">
-          <!-- Заглушка: будет заменена реальным изображением курса -->
-          <div class="img-placeholder" role="img" aria-label="Здесь будет изображение курса по нейросетям">
-            Здесь будет изображение курса по нейросетям
-          </div>
+          <!-- Изображение добавлено при доработке сайта (ветка new-photos) -->
+          <img class="hero-img" src="img/hero.jpg" alt="Маркетолог анализирует показатели кампаний на мониторе с графиками">
         </div>
       </div>
     </section>
@@ -500,10 +547,36 @@
     <section class="about" id="about">
       <div class="container about-inner">
         <h2 class="section-title">Как устроено обучение</h2>
+        <div class="about-grid">
+          <img class="about-img" src="img/about.jpg" alt="Студентка конспектирует занятие возле ноутбука">
+          <div class="about-text">
         <p><strong>Программа построена вокруг практики.</strong> За четыре недели вы пройдёте путь от базового понимания генеративных моделей до уверенного применения нейросетей в маркетинговых процессах: стратегии, рекламе, контенте и аналитике.</p>
         <p><strong>Каждую неделю — новая тема и новый проект.</strong> Генерация текстов и заголовков, создание визуала, работа с гипотезами и сегментацией аудитории, автоматизация отчётов. Мы разбираем, как формулировать промпты так, чтобы результат был предсказуемым и соответствующим бренду.</p>
         <p><strong>Обратная связь — ключевая часть курса.</strong> Каждое задание проверяется экспертом: вы получаете не только оценку, но и рекомендации, как улучшить решение и что добавить в свой «рабочий стек» инструментов.</p>
         <p><strong>Мы учим критически относиться к результату модели.</strong> Вы поймёте ограничения нейросетей, научитесь проверять факты и выстраивать процессы, где ИИ ускоряет работу, а финальное решение остаётся за специалистом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Мини-галерея «Как проходят занятия» ===== -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Как проходят занятия</h2>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="img/gallery-team.jpg" alt="Команда разбирает учебный кейс за столом">
+            <figcaption class="gallery-caption">Разбор кейсов в мини-группах</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/gallery-analytics.jpg" alt="Монитор с дашбордами маркетинговой аналитики">
+            <figcaption class="gallery-caption">Работа с аналитикой и метриками</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/gallery-content.jpg" alt="Рабочее место с ноутбуком и планом контента">
+            <figcaption class="gallery-caption">Практика по контенту и креативам</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -610,6 +683,7 @@
         <b>Навигация</b>
         <a href="#features">Преимущества</a>
         <a href="#about">Обучение</a>
+        <a href="#gallery">Занятия</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contacts">Контакты</a>
       </div>
@@ -635,7 +709,7 @@
 
   <script>
     // Плавное появление секций при прокрутке
-    const revealTargets = document.querySelectorAll('.feature-card, .review-card, .about-inner, .cta .container, .contacts-grid');
+    const revealTargets = document.querySelectorAll('.feature-card, .review-card, .gallery-item, .about-inner, .cta .container, .contacts-grid');
     revealTargets.forEach(el => el.classList.add('reveal'));
 
     const observer = new IntersectionObserver((entries) => {
