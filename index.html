@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Онлайн-курс «Нейросети для маркетологов»: от идеи до результата за 4 недели. Практика с первого дня, поддержка экспертов.">
+  <meta name="author" content="А. А. Володин">
+  <title>NeuroMarketing — нейросети для маркетологов</title>
+
+  <style>
+    /* ===== Базовые стили и переменные ===== */
+    :root {
+      --primary: #2563eb;        /* синий акцент: кнопки, логотип, ссылки */
+      --primary-dark: #1d4ed8;
+      --text: #1f2937;           /* тёмно-серый основной текст */
+      --muted: #55606e;          /* приглушённый текст */
+      --bg-soft: #f4f7ff;        /* светлый фон секций */
+      --border: #e3e8f4;
+      --radius: 16px;
+      --shadow: 0 8px 28px rgba(23, 43, 99, 0.08);
+      --container: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; } /* Плавная прокрутка по якорным ссылкам */
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.65;
+    }
+
+    img, .img-placeholder { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section { padding: 72px 0; }
+
+    .section-title {
+      font-size: 32px;
+      line-height: 1.25;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* ===== Кнопки ===== */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background-color .25s, color .25s, box-shadow .25s, border-color .25s, transform .15s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, .35);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+      padding: 8px 20px;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-light {
+      background: #fff;
+      color: var(--primary);
+    }
+    .btn-light:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+      transform: translateY(-1px);
+    }
+    .btn-lg { padding: 15px 34px; font-size: 17px; }
+
+    /* ===== Шапка сайта (закреплена при прокрутке) ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: .2px;
+    }
+    .logo span { color: var(--text); }
+
+    /* ===== Hero-секция ===== */
+    .hero { padding: 64px 0 56px; background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft) 100%); }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.18;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .hero-stats span {
+      display: block;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .hero-stats li {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Серая заглушка вместо изображения курса */
+    .img-placeholder {
+      width: 100%;
+      min-height: 400px;
+      max-width: 500px;
+      margin-left: auto;
+      border-radius: var(--radius);
+      background: #dde3ee;
+      color: #6b7686;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      font-size: 15px;
+      border: 2px dashed #b9c3d6;
+    }
+
+    /* ===== Секция преимуществ ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(23, 43, 99, .14);
+    }
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #eaf1ff;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+    .feature-card p { color: var(--muted); font-size: 15.5px; }
+
+    /* ===== Секция «Как устроено обучение» ===== */
+    .about { background: var(--bg-soft); }
+    .about-inner { max-width: 860px; margin: 0 auto; }
+    .about p { margin-bottom: 16px; color: var(--muted); font-size: 16.5px; }
+    .about p strong { color: var(--text); }
+
+    /* ===== CTA-блок (контрастный фон) ===== */
+    .cta {
+      background: linear-gradient(120deg, var(--primary) 0%, #4f46e5 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .cta h2 { font-size: 34px; margin-bottom: 14px; }
+    .cta p { opacity: .92; margin-bottom: 30px; font-size: 17px; }
+
+    /* ===== Контакты ===== */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .contact-form {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+    }
+    .contact-form label {
+      font-size: 14px;
+      font-weight: 600;
+      display: grid;
+      gap: 6px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      color: var(--text);
+      background: #fbfcff;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+    }
+    .contact-info {
+      display: grid;
+      gap: 18px;
+      font-size: 16px;
+    }
+    .contact-info .item {
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .contact-info b { display: block; margin-bottom: 4px; }
+    .contact-info p { color: var(--muted); }
+
+    /* ===== Подвал ===== */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    /* ===== Кнопка «Наверх» ===== */
+    .to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .4);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .3s, background-color .25s;
+    }
+    .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .to-top:hover { background: var(--primary-dark); }
+
+    /* ===== Анимация появления секций при прокрутке ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== Адаптивность ===== */
+    /* Планшеты: преимущества в 2 колонки */
+    @media (max-width: 1023px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 38px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .img-placeholder { margin: 0 auto; }
+    }
+    /* Мобильные: одна колонка, элементы не выходят за края */
+    @media (max-width: 767px) {
+      section { padding: 52px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 30px; }
+      .section-title { font-size: 25px; }
+      .cta h2 { font-size: 26px; }
+      .hero-stats { gap: 22px; }
+      .header-inner { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Шапка: логотип + кнопка «Контакты» (закреплена при прокрутке) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Neuro<span>Marketing</span></a>
+      <nav aria-label="Основная навигация">
+        <a class="btn btn-outline" href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero-блок: слоган + кнопка призыва к действию ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Нейросети для маркетологов: от идеи до результата за 4 недели</h1>
+          <p class="hero-sub">Научитесь применять нейросети в маркетинге: генерация контента, аналитика аудитории и автоматизация рутины — на реальных кейсах и с обратной связью экспертов.</p>
+          <a href="#contacts" class="btn btn-primary btn-lg">Оставить заявку</a>
+          <ul class="hero-stats">
+            <li><span>4 недели</span>интенсивного обучения</li>
+            <li><span>12</span>практических занятий</li>
+            <li><span>50+</span>готовых промптов</li>
+          </ul>
+        </div>
+        <div class="hero-media">
+          <!-- Заглушка: будет заменена реальным изображением курса -->
+          <div class="img-placeholder" role="img" aria-label="Здесь будет изображение курса по нейросетям">
+            Здесь будет изображение курса по нейросетям
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Секция преимуществ ===== -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Почему выбирают наш курс</h2>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔨</div>
+            <h3>Практика с первого дня</h3>
+            <p>Каждое занятие заканчивается заданием на реальных данных: вы сразу пробуете инструменты на своих маркетинговых задачах, а не только смотрите теорию.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🧾</div>
+            <h3>Рост эффективности</h3>
+            <p>Автоматизируйте подготовку текстов, креативов и отчётов: выпускники курса сокращают время рутинных задач и увеличивают скорость запуска кампаний.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">👷</div>
+            <h3>Поддержка экспертов</h3>
+            <p>Разбор домашних заданий, живая обратная связь от практикующих маркетологов и кураторов — вы не останетесь один на один с инструментами.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Секция «Как устроено обучение» ===== -->
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <h2 class="section-title">Как устроено обучение</h2>
+        <p><strong>Программа построена вокруг практики.</strong> За четыре недели вы пройдёте путь от базового понимания генеративных моделей до уверенного применения нейросетей в маркетинговых процессах: стратегии, рекламе, контенте и аналитике.</p>
+        <p><strong>Каждую неделю — новая тема и новый проект.</strong> Генерация текстов и заголовков, создание визуала, работа с гипотезами и сегментацией аудитории, автоматизация отчётов. Мы разбираем, как формулировать промпты так, чтобы результат был предсказуемым и соответствующим бренду.</p>
+        <p><strong>Обратная связь — ключевая часть курса.</strong> Каждое задание проверяется экспертом: вы получаете не только оценку, но и рекомендации, как улучшить решение и что добавить в свой «рабочий стек» инструментов.</p>
+        <p><strong>Мы учим критически относиться к результату модели.</strong> Вы поймёте ограничения нейросетей, научитесь проверять факты и выстраивать процессы, где ИИ ускоряет работу, а финальное решение остаётся за специалистом.</p>
+      </div>
+    </section>
+
+    <!-- ===== CTA-блок: призыв к действию ===== -->
+    <section class="cta">
+      <div class="container">
+        <h2>Готовы прокачать свой маркетинг с нейросетями?</h2>
+        <p>Оставьте заявку — расскажем о программе, формате занятий и старте ближайшего потока.</p>
+        <a href="#contacts" class="btn btn-light btn-lg">Оставить заявку</a>
+      </div>
+    </section>
+
+    <!-- ===== Свяжитесь с нами ===== -->
+    <section class="contacts" id="contacts">
+      <div class="container">
+        <h2 class="section-title">Свяжитесь с нами</h2>
+        <div class="contacts-grid">
+          <form class="contact-form" id="contactForm">
+            <label>Имя
+              <input type="text" name="name" placeholder="Как к вам обращаться">
+            </label>
+            <label>Email
+              <input type="email" name="email" placeholder="you@example.com">
+            </label>
+            <label>Текст сообщения
+              <textarea name="message" rows="5" placeholder="Ваш вопрос о курсе"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+          </form>
+          <div class="contact-info">
+            <div class="item">
+              <b>Адрес</b>
+              <p>г. Санкт-Петербург, ул. Пушкина, д. 10, офис 42</p>
+            </div>
+            <div class="item">
+              <b>Телефон</b>
+              <p>+7 (999) 000-00-00</p>
+            </div>
+            <div class="item">
+              <b>Почта</b>
+              <p>info@neuromarketing-course.ru</p>
+            </div>
+            <div class="item">
+              <b>Режим работы</b>
+              <p>Пн–Пт: 10:00 — 19:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Подвал ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 NeuroMarketing. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- Кнопка «Наверх» -->
+  <button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+  <script>
+    // Плавное появление секций при прокрутке
+    const revealTargets = document.querySelectorAll('.feature-card, .about-inner, .cta .container, .contacts-grid');
+    revealTargets.forEach(el => el.classList.add('reveal'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(el => observer.observe(el));
+
+    // Кнопка «Наверх» появляется после прокрутки на 300px
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.classList.toggle('show', window.scrollY > 300);
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Форма обратной связи (демонстрационная отправка)
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Спасибо! Ваша заявка отправлена — мы свяжемся с вами.');
+    });
+  </script>
+</body>
+</html>
