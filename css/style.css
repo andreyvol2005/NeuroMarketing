@@ -144,6 +144,28 @@
       color: var(--muted);
     }
 
+    /* Плашка с датой последней автоматической публикации */
+    .ci-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 6px 14px;
+      border: 1px solid #16a34a;
+      border-radius: 999px;
+      background: #f0fdf4;
+      color: #15803d;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .ci-note::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
     /* Серая заглушка вместо изображения курса */
     .img-placeholder {
       width: 100%;
